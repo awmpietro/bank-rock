@@ -1,0 +1,59 @@
+version: "3.7"
+
+services:
+  client:
+    tty: true
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    depends_on:
+      - server
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_OPTIONS=--max-old-space-size=4096
+      - REACT_APP_SERVER_URL=http://localhost:8080
+    ports:
+      - "5000:5000"
+    command: sh -c "npm run build && serve -s build"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    container_name: client-bank-rock
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - DB_HOST=host.docker.internal
+      - DB_PORT=35432
+      - DB_NAME=bank_rock
+      - DB_USER=postgres
+      - DB_PASS=1234
+      - NODE_ENV=development
+      - PORT=8080
+      - REDIS_URL=redis://cache
+    ports:
+      - "8080:8080"
+    command: sh -c "node_modules/.bin/sequelize db:migrate && node_modules/.bin/sequelize db:seed:all && npm run test && npm start"
+    volumes:
+      - ./server:/app/
+      - /app/node_modules
+    container_name: server-bank-rock
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
+  postgres:
+    image: postgres:11.9
+    ports:
+      - "35432:5432"
+    environment:
+      POSTGRES_HOST: host.docker.internal
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: bank_rock
+    container_name: postgress-bank-rock

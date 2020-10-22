@@ -1,0 +1,42 @@
+{
+  "name": "bank-rock-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "nyc --reporter=html mocha --reporter mocha-reporter-badge > ./test/badge.svg --timeout 20000 --recursive --exit",
+    "start": "node app.js"
+  },
+  "author": "Arthur Mastropietro",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^3.0.8",
+    "body-parser": "^1.18.3",
+    "connect-redis": "^5.0.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-session": "^1.17.1",
+    "helmet": "^3.21.2",
+    "moment": "^2.24.0",
+    "pg": "^7.6.1",
+    "redis": "^3.0.2",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "mocha": "^7.0.1",
+    "mocha-reporter-badge": "^0.1.0",
+    "nyc": "^13.2.0",
+    "prettier": "^2.1.2",
+    "sequelize-cli": "^6.2.0",
+    "sinon": "^9.0.1"
+  }
+}
