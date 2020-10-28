@@ -3,15 +3,12 @@
 This is a project for educational purposes. Bank Rock is a prototype app for a Open Banking project
 
 [![](https://img.shields.io/badge/dependencies-docker-blue.svg)]()
-
 [![](https://img.shields.io/badge/node-%3E%3D12-green.svg)]()
 [![](https://img.shields.io/badge/express-4-important.svg)]()
 [![](./server/test/badge.svg)]()
-
 [![](https://img.shields.io/badge/react-16.14.0-lightgrey.svg)]()
 [![](https://img.shields.io/badge/redux-4-9cf.svg)]()
 [![](https://img.shields.io/badge/redux--saga-1-ff69b4.svg)]()
-
 [![](https://img.shields.io/badge/postgres-11.9-informational.svg)]()
 [![](https://img.shields.io/badge/redis-latest-yellowgreen.svg)]()
 
