@@ -22,7 +22,7 @@ const app = express();
 
 app.use(
   session({
-    secret: '4cadiafoundation',
+    secret: 'bankrock2020',
     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 },
     store: new redisStore({
       host: 'cache',
